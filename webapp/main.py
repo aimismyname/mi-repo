@@ -13,7 +13,7 @@ def login():
     return '<form method="post"><input type="password" name="title" placeholder="Password"></input><button type="submit">Login</button>'
 
 
-def verify_pw(pw):  # https://owasp.org/www-project-proactive-controls/v3/en/c6-digital-identity
+def verify_pw(pw):  # guideline: https://owasp.org/www-project-proactive-controls/v3/en/c6-digital-identity
     with open('10-million-password-list-top-1000.txt') as f:
         if pw in f.read():
             print("bad password")

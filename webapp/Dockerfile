@@ -1,5 +1,12 @@
-FROM nginx:1.15.8
+# syntax=docker/dockerfile:1
 
-EXPOSE 80
+FROM python:3.8-slim-buster
 
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /webapp
+
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
